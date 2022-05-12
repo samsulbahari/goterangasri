@@ -18,6 +18,6 @@ func main() {
 	dbName := os.Getenv("DB_NAME")
 	dbPort := os.Getenv("DB_PORT")
 
-	var dsn = "host=" + dbHost + " user=" + dbUser + " password=" + dbPass + " dbname=" + dbName + " port=" + dbPort + " sslmode=requireTimeZone=Asia/Shanghai"
+	var dsn = "host=" + dbHost + " user=" + dbUser + " password=" + dbPass + "dbname=" + dbName + "port=" + dbPort + "sslmode=require TimeZone=Asia/Shanghai"
 	fmt.Println(dsn)
 }
