@@ -1,14 +1,17 @@
-package config
+package main
 
 import (
+	"fmt"
 	"os"
 
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
-	"gorm.io/gorm/schema"
+	"github.com/joho/godotenv"
 )
 
-func SetDatabase() (*gorm.DB, error) {
+func main() {
+	err := godotenv.Load()
+	if err != nil {
+		panic(err)
+	}
 	dbUser := os.Getenv("DB_USER")
 	dbPass := os.Getenv("DB_PASS")
 	dbHost := os.Getenv("DB_HOST")
@@ -16,11 +19,5 @@ func SetDatabase() (*gorm.DB, error) {
 	dbPort := os.Getenv("DB_PORT")
 
 	var dsn = "host=" + dbHost + " user=" + dbUser + " password=" + dbPass + " dbname=" + dbName + " port=" + dbPort + " sslmode=requireTimeZone=Asia/Shanghai"
-
-	var Db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{NamingStrategy: schema.NamingStrategy{
-		SingularTable: true,
-	}})
-
-	return Db, err
-
+	fmt.Println(dsn)
 }
