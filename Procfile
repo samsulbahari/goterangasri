@@ -1,1 +1,1 @@
-web: goterangasri
+web: bin/goterangasri
