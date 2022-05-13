@@ -2,6 +2,7 @@ package router
 
 import (
 	"goterangasri/config"
+	"goterangasri/controller"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,6 +12,7 @@ func Setuprouter() *gin.Engine {
 	auth := r.Group("/auth")
 	auhtmiddleware, _ := config.Jwt_config()
 	r.POST("/login", auhtmiddleware.LoginHandler)
+	r.POST("/register", controller.Registerinsert)
 
 	auth.Use(auhtmiddleware.MiddlewareFunc())
 	{
